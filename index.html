@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON</title>
+</head>
+
+<body>
+  <h1>JSON</h1>
+  <h2>JavaScript Object Notation</h2>
+
+  <img src="" alt=" " >
+  <div id="container">
+
+  </div>
+  <input type="text" id="title" class="text" placeholder="title">
+  <br><br>
+  <input type="text" id="bodyContent" class="text" placeholder="Post body is here">
+  <br><br>
+  <button id="submit">submit</button>
+
+  <script>
+
+    // JSON, JSON Structure, parse, stringify, JSON properties
+    const user = {
+      id: 23,
+      Name: "Shadhin Khan",
+      batch: "1st",
+      Performance: [60, 60, 60, 60, 60],
+      offerCompany: ["suzuki", "DhoniBuilders", "Pran"]
+    }
+
+
+    const userJSON = JSON.stringify(user)
+    console.log(userJSON)
+    const userFromJSON = JSON.parse(userJSON)
+    console.log(userFromJSON)
+
+
+    // Load data, JSON placeholder, GET data, display data on UI
+
+    //  fetch('https://jsonplaceholder.typicode.com/todos/1')
+    // .then(response => response.json())
+    // .then(json => console.log(json))
+
+    // fetch('https://jsonplaceholder.typicode.com/photos')
+    //   .then(response => response.json())
+    //   .then(json => console.log(json))
+
+    //   const postShowing = photos =>{
+    //     for (let i = 0; i < photos.length; i++) {
+    //       const element = photos[i];
+    //       const elementTitle = element.thumbnailUrl;
+    //       const paraGraph = document.createElement("p")
+    //       paraGraph.innerText = elementTitle;
+    //       const div = document.getElementById("container")
+    //       div.appendChild(paraGraph)
+          
+    //     }
+    //   }
+
+    // const displayPhotos = posts => {
+    //   //using for loop
+
+      // for (let i = 0; i < users.length; i++) {
+      //   const element = users[i];
+      //   const userName = element.email;
+      //   console.log(userName)
+      //   let li = document.createElement("li")
+      //   li.innerText = userName;
+      //   const ul = document.getElementById("email");
+      //   ul.appendChild(li)
+
+
+      // }
+
+      //using map here i have to ask in the meet session how can i user images or comment form backend
+
+    //   const userName = posts.map(photos => photos);
+    //   for (let i = 0; i < userName.length; i++) {
+    //     const element = userName[i];
+
+    //     const ul = document.getElementById("user-name")
+    //     const p = document.createElement("p")
+    //     p.innerText = element;
+    //     ul.appendChild(p)
+
+    //   }
+
+    // }
+
+// HTTP request, Status code, network tab, bad API
+
+
+
+
+
+ //Send data to the server, HTTP POST Method, GET Vs POST
+ document.getElementById("submit").addEventListener("click",function(){
+   const title = document.getElementById("title").value
+   const bodyContent = document.getElementById("bodyContent").value
+   const post = {
+     title:title,
+     body: bodyContent
+   }
+
+   nowPostToServer(post);
+ })
+      function nowPostToServer(postInfo){
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        body: JSON.stringify({postInfo}),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })
+    .then(response => response.json())
+    .then(json => console.log(json))
+      }
+        
+
+       
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>
